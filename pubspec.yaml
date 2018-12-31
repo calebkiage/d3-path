@@ -1,0 +1,11 @@
+name: d3_path
+description: Serialize Canvas path commands to SVG.
+version: 1.0.7
+# homepage: https://www.example.com
+# author: caleb <email@example.com>
+
+environment:
+  sdk: '>=2.1.0 <3.0.0'
+
+dev_dependencies:
+  test: ^1.0.0
