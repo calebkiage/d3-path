@@ -1,9 +1,9 @@
 import 'dart:math' as Math;
 
-double pi = Math.pi;
-double tau = 2 * pi;
-double epsilon = 1e-6;
-double tauEpsilon = tau - epsilon;
+const double _pi = Math.pi;
+const double _tau = 2 * _pi;
+const double _epsilon = 1e-6;
+const double _tauEpsilon = _tau - _epsilon;
 
 Path path() {
   return Path();
@@ -62,12 +62,12 @@ class Path {
       this._ += "M${(this._x1 = x1)},${(this._y1 = y1)}";
     }
     // Or, is (x1,y1) coincident with (x0,y0)? Do nothing.
-    else if (!(l01_2 > epsilon));
+    else if (!(l01_2 > _epsilon));
 
     // Or, are (x0,y0), (x1,y1) and (x2,y2) collinear?
     // Equivalently, is (x1,y1) coincident with (x2,y2)?
     // Or, is the radius zero? Line to (x1,y1).
-    else if (!((y01 * x21 - y21 * x01).abs() > epsilon) || r == 0) {
+    else if (!((y01 * x21 - y21 * x01).abs() > _epsilon) || r == 0) {
       this._ += "L${(this._x1 = x1)},${(this._y1 = y1)}";
     }
 
@@ -81,13 +81,13 @@ class Path {
           l01 = Math.sqrt(l01_2),
           l = r *
               Math.tan(
-                  (pi - Math.acos((l21_2 + l01_2 - l20_2) / (2 * l21 * l01))) /
+                  (_pi - Math.acos((l21_2 + l01_2 - l20_2) / (2 * l21 * l01))) /
                       2),
           t01 = l / l01,
           t21 = l / l21;
 
       // If the start tangent is not coincident with (x0,y0), line to.
-      if ((t01 - 1).abs() > epsilon) {
+      if ((t01 - 1).abs() > _epsilon) {
         this._ += "L${(x1 + t01 * x01)},${(y1 + t01 * y01)}";
       }
 
@@ -115,8 +115,8 @@ class Path {
     }
 
     // Or, is (x0,y0) not coincident with the previous point? Line to (x0,y0).
-    else if ((this._x1 - x0).abs() > epsilon ||
-        (this._y1 - y0).abs() > epsilon) {
+    else if ((this._x1 - x0).abs() > _epsilon ||
+        (this._y1 - y0).abs() > _epsilon) {
       this._ += "L$x0,$y0";
     }
 
@@ -125,18 +125,18 @@ class Path {
 
     // Does the angle go the wrong way? Flip the direction.
     // Using % always returns a non-negative number. Use remainder instead.
-    if (da < 0) da = da.remainder(tau) + tau;
+    if (da < 0) da = da.remainder(_tau) + _tau;
 
     // Is this a complete circle? Draw two arcs to complete the circle.
-    if (da > tauEpsilon) {
+    if (da > _tauEpsilon) {
       this._ +=
           "A$r,$r,0,1,$cw,${(x - dx)},${(y - dy)}A$r,$r,0,1,$cw,${(this._x1 = x0)},${(this._y1 = y0)}";
     }
 
     // Is this arc non-empty? Draw an arc!
-    else if (da > epsilon) {
+    else if (da > _epsilon) {
       this._ +=
-          "A$r,$r,0,${(da >= pi) ? 1 : 0},$cw,${(this._x1 = x + (r * Math.cos(a1)))},${(this._y1 = y + (r * Math.sin(a1)))}";
+          "A$r,$r,0,${(da >= _pi) ? 1 : 0},$cw,${(this._x1 = x + (r * Math.cos(a1)))},${(this._y1 = y + (r * Math.sin(a1)))}";
     }
   }
 
