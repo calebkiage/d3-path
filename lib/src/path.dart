@@ -96,7 +96,7 @@ class Path {
     }
   }
 
-  void arc(num x, num y, num r, num a0, num a1, {bool ccw = false}) {
+  void arc(num x, num y, num r, num a0, num a1, [bool ccw = false]) {
     num dx = r * Math.cos(a0);
     num dy = r * Math.sin(a0);
     num x0 = x + dx;

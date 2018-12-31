@@ -160,7 +160,7 @@ void main() {
   test('path.arc(x, y, radius, 0, π/2, false) draws a small clockwise arc', () {
     var p = Path();
     p.moveTo(150, 100);
-    p.arc(100, 100, 50, 0, Math.pi / 2, ccw: false);
+    p.arc(100, 100, 50, 0, Math.pi / 2, false);
     expect(p, pathEqual('M150,100A50,50,0,0,1,100,150'));
   });
 
@@ -168,49 +168,49 @@ void main() {
       () {
     var p = Path();
     p.moveTo(100, 50);
-    p.arc(100, 100, 50, -Math.pi / 2, 0, ccw: false);
+    p.arc(100, 100, 50, -Math.pi / 2, 0, false);
     expect(p, pathEqual('M100,50A50,50,0,0,1,150,100'));
   });
 
   test('path.arc(x, y, radius, 0, ε, true) draws an anticlockwise circle', () {
     var p = Path();
     p.moveTo(150, 100);
-    p.arc(100, 100, 50, 0, 1e-16, ccw: true);
+    p.arc(100, 100, 50, 0, 1e-16, true);
     expect(p, pathEqual('M150,100A50,50,0,1,0,50,100A50,50,0,1,0,150,100'));
   });
 
   test('path.arc(x, y, radius, 0, ε, false) draws nothing', () {
     var p = Path();
     p.moveTo(150, 100);
-    p.arc(100, 100, 50, 0, 1e-16, ccw: false);
+    p.arc(100, 100, 50, 0, 1e-16, false);
     expect(p, pathEqual('M150,100'));
   });
 
   test('path.arc(x, y, radius, 0, -ε, true) draws nothing', () {
     var p = Path();
     p.moveTo(150, 100);
-    p.arc(100, 100, 50, 0, -1e-16, ccw: true);
+    p.arc(100, 100, 50, 0, -1e-16, true);
     expect(p, pathEqual('M150,100'));
   });
 
   test('path.arc(x, y, radius, 0, -ε, false) draws a clockwise circle', () {
     var p = Path();
     p.moveTo(150, 100);
-    p.arc(100, 100, 50, 0, -1e-16, ccw: false);
+    p.arc(100, 100, 50, 0, -1e-16, false);
     expect(p, pathEqual('M150,100A50,50,0,1,1,50,100A50,50,0,1,1,150,100'));
   });
 
   test('path.arc(x, y, radius, 0, τ, true) draws an anticlockwise circle', () {
     var p = Path();
     p.moveTo(150, 100);
-    p.arc(100, 100, 50, 0, 2 * Math.pi, ccw: true);
+    p.arc(100, 100, 50, 0, 2 * Math.pi, true);
     expect(p, pathEqual('M150,100A50,50,0,1,0,50,100A50,50,0,1,0,150,100'));
   });
 
   test('path.arc(x, y, radius, 0, τ, false) draws a clockwise circle', () {
     var p = Path();
     p.moveTo(150, 100);
-    p.arc(100, 100, 50, 0, 2 * Math.pi, ccw: false);
+    p.arc(100, 100, 50, 0, 2 * Math.pi, false);
     expect(p, pathEqual('M150,100A50,50,0,1,1,50,100A50,50,0,1,1,150,100'));
   });
 
@@ -218,49 +218,49 @@ void main() {
       () {
     var p = Path();
     p.moveTo(150, 100);
-    p.arc(100, 100, 50, 0, 2 * Math.pi + 1e-13, ccw: true);
+    p.arc(100, 100, 50, 0, 2 * Math.pi + 1e-13, true);
     expect(p, pathEqual('M150,100A50,50,0,1,0,50,100A50,50,0,1,0,150,100'));
   });
 
   test('path.arc(x, y, radius, 0, τ - ε, false) draws a clockwise circle', () {
     var p = Path();
     p.moveTo(150, 100);
-    p.arc(100, 100, 50, 0, 2 * Math.pi - 1e-13, ccw: false);
+    p.arc(100, 100, 50, 0, 2 * Math.pi - 1e-13, false);
     expect(p, pathEqual('M150,100A50,50,0,1,1,50,100A50,50,0,1,1,150,100'));
   });
 
   test('path.arc(x, y, radius, τ, 0, true) draws an anticlockwise circle', () {
     var p = Path();
     p.moveTo(150, 100);
-    p.arc(100, 100, 50, 0, 2 * Math.pi, ccw: true);
+    p.arc(100, 100, 50, 0, 2 * Math.pi, true);
     expect(p, pathEqual('M150,100A50,50,0,1,0,50,100A50,50,0,1,0,150,100'));
   });
 
   test('path.arc(x, y, radius, τ, 0, false) draws a clockwise circle', () {
     var p = Path();
     p.moveTo(150, 100);
-    p.arc(100, 100, 50, 0, 2 * Math.pi, ccw: false);
+    p.arc(100, 100, 50, 0, 2 * Math.pi, false);
     expect(p, pathEqual('M150,100A50,50,0,1,1,50,100A50,50,0,1,1,150,100'));
   });
 
   test('path.arc(x, y, radius, 0, 13π/2, false) draws a clockwise circle', () {
     var p = Path();
     p.moveTo(150, 100);
-    p.arc(100, 100, 50, 0, 13 * Math.pi / 2, ccw: false);
+    p.arc(100, 100, 50, 0, 13 * Math.pi / 2, false);
     expect(p, pathEqual('M150,100A50,50,0,1,1,50,100A50,50,0,1,1,150,100'));
   });
 
   test('path.arc(x, y, radius, 13π/2, 0, false) draws a big clockwise arc', () {
     var p = Path();
     p.moveTo(100, 150);
-    p.arc(100, 100, 50, 13 * Math.pi / 2, 0, ccw: false);
+    p.arc(100, 100, 50, 13 * Math.pi / 2, 0, false);
     expect(p, pathEqual('M100,150A50,50,0,1,1,150,100'));
   });
 
   test('path.arc(x, y, radius, π/2, 0, false) draws a big clockwise arc', () {
     var p = Path();
     p.moveTo(100, 150);
-    p.arc(100, 100, 50, Math.pi / 2, 0, ccw: false);
+    p.arc(100, 100, 50, Math.pi / 2, 0, false);
     expect(p, pathEqual('M100,150A50,50,0,1,1,150,100'));
   });
 
@@ -268,7 +268,7 @@ void main() {
       () {
     var p = Path();
     p.moveTo(100, 50);
-    p.arc(100, 100, 50, 3 * Math.pi / 2, 0, ccw: false);
+    p.arc(100, 100, 50, 3 * Math.pi / 2, 0, false);
     expect(p, pathEqual('M100,50A50,50,0,0,1,150,100'));
   });
 
@@ -276,7 +276,7 @@ void main() {
       () {
     var p = Path();
     p.moveTo(100, 50);
-    p.arc(100, 100, 50, 15 * Math.pi / 2, 0, ccw: false);
+    p.arc(100, 100, 50, 15 * Math.pi / 2, 0, false);
     expect(p, pathEqual('M100,50A50,50,0,0,1,150,100'));
   });
 
@@ -284,7 +284,7 @@ void main() {
       () {
     var p = Path();
     p.moveTo(150, 100);
-    p.arc(100, 100, 50, 0, Math.pi / 2, ccw: true);
+    p.arc(100, 100, 50, 0, Math.pi / 2, true);
     expect(p, pathEqual('M150,100A50,50,0,1,0,100,150'));
   });
 
@@ -292,7 +292,7 @@ void main() {
       () {
     var p = Path();
     p.moveTo(100, 50);
-    p.arc(100, 100, 50, -Math.pi / 2, 0, ccw: true);
+    p.arc(100, 100, 50, -Math.pi / 2, 0, true);
     expect(p, pathEqual('M100,50A50,50,0,1,0,150,100'));
   });
 
@@ -300,7 +300,7 @@ void main() {
       () {
     var p = Path();
     p.moveTo(100, 50);
-    p.arc(100, 100, 50, -13 * Math.pi / 2, 0, ccw: true);
+    p.arc(100, 100, 50, -13 * Math.pi / 2, 0, true);
     expect(p, pathEqual('M100,50A50,50,0,1,0,150,100'));
   });
 
@@ -308,7 +308,7 @@ void main() {
       () {
     var p = Path();
     p.moveTo(150, 100);
-    p.arc(100, 100, 50, 0, -13 * Math.pi / 2, ccw: false);
+    p.arc(100, 100, 50, 0, -13 * Math.pi / 2, false);
     expect(p, pathEqual('M150,100A50,50,0,1,1,100,50'));
   });
 
@@ -316,7 +316,7 @@ void main() {
       () {
     var p = Path();
     p.moveTo(150, 100);
-    p.arc(100, 100, 50, 0, 13 * Math.pi / 2, ccw: true);
+    p.arc(100, 100, 50, 0, 13 * Math.pi / 2, true);
     expect(p, pathEqual('M150,100A50,50,0,1,0,100,150'));
   });
 
@@ -324,7 +324,7 @@ void main() {
       () {
     var p = Path();
     p.moveTo(100, 150);
-    p.arc(100, 100, 50, Math.pi / 2, 0, ccw: true);
+    p.arc(100, 100, 50, Math.pi / 2, 0, true);
     expect(p, pathEqual('M100,150A50,50,0,0,0,150,100'));
   });
 
@@ -332,7 +332,7 @@ void main() {
       () {
     var p = Path();
     p.moveTo(100, 50);
-    p.arc(100, 100, 50, 3 * Math.pi / 2, 0, ccw: true);
+    p.arc(100, 100, 50, 3 * Math.pi / 2, 0, true);
     expect(p, pathEqual('M100,50A50,50,0,1,0,150,100'));
   });
 
